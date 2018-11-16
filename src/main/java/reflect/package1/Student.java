@@ -47,6 +47,7 @@ public class Student extends AbstractStudent implements Comparable{
 
     // 普通方法
     public Student newStudent(String name, int age){
+        if(studentFactory.get(name) != null) return studentFactory.get(name);
         Student s = new Student(name,age);
         studentFactory.put(name,s);
         return s;
