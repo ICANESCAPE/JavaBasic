@@ -3,6 +3,7 @@ package reflect;
 import reflect.package1.Student;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 
@@ -52,8 +53,6 @@ public class Test {
         // 获取Class对象
         System.out.println(clazz.getName());
 
-        // 类的一些关键性的元素
-
         // 构造函数
         System.out.println("———————————构造函数————————————");
         Constructor [] constructors = clazz.getConstructors();
@@ -64,9 +63,14 @@ public class Test {
         }
 
 
+        Class c = Student.class;
 
         // 普通函数
-        Class c = Student.class;
+        Field field = c.getClass().getDeclaredField("studentFactory");
+        field.setAccessible(true);
+        info("private static map是" + field.get("studentFactory"));
+        // 对象变量
+
         Method[] methods = c.getDeclaredMethods();
         info("所有的方法: ");
         for(Method method : methods) {
@@ -78,12 +82,23 @@ public class Test {
         info(method);
 
         // 类变量
+        info("public变量");
+        Field[] fields = c.getFields();
+        for(Field f : fields) {
+            info(f);
+        }
 
-
-        // 对象变量
+        info("所有变量");
+        Field[] fields1 = c.getDeclaredFields();
+        for(Field f : fields1) {
+            info(f);
+        }
 
 
         // 新建一个对象
+        /**
+         * 这个和构造函数一样好像
+         */
 
 
 
