@@ -3,6 +3,7 @@ package reflect;
 import reflect.package1.Student;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.util.HashSet;
 
 public class Test {
@@ -65,7 +66,16 @@ public class Test {
 
 
         // 普通函数
+        Class c = Student.class;
+        Method[] methods = c.getDeclaredMethods();
+        info("所有的方法: ");
+        for(Method method : methods) {
+            info(method);
+        }
 
+        info("获取toString方法");
+        Method method = c.getMethod("toString", c);
+        info(method);
 
         // 类变量
 
@@ -79,5 +89,9 @@ public class Test {
 
         System.out.println("\n\n\n——————————————————————————");
 
+    }
+
+    private static void info(Object o) {
+        System.out.println(o);
     }
 }

@@ -17,7 +17,7 @@ public class Student extends AbstractStudent implements Comparable{
     public static HashMap<String,Student> studentFactory;
 
     static {
-        studentFactory = new HashMap<>();
+        studentFactory = new HashMap<String, Student>();
     }
 
     // 构造函数:无参数
@@ -30,12 +30,6 @@ public class Student extends AbstractStudent implements Comparable{
     }
 
 
-    // 实现接口里的方法
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
-
     // 重写父类的函数
     @Override
     public String toString() {
@@ -45,11 +39,15 @@ public class Student extends AbstractStudent implements Comparable{
                 '}';
     }
 
+    public int compareTo(Object o) {
+        return 0;
+    }
+
     // 普通方法
     public Student newStudent(String name, int age){
-        if(studentFactory.get(name) != null) return studentFactory.get(name);
-        Student s = new Student(name,age);
-        studentFactory.put(name,s);
+        if(studentFactory.get(name) != null) { return studentFactory.get(name);}
+        Student s = new Student(name, age);
+        studentFactory.put(name, s);
         return s;
     }
 
