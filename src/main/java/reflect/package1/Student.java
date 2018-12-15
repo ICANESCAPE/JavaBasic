@@ -9,7 +9,7 @@ abstract class AbstractStudent{
 
 public class Student extends AbstractStudent implements Comparable{
 
-    // 实例bianliang
+    // 实例变量
     String name;
     int age;
 
@@ -20,17 +20,26 @@ public class Student extends AbstractStudent implements Comparable{
         studentFactory = new HashMap<String, Student>();
     }
 
-    // 构造函数:无参数
+    /**
+     * 构造函数: 无参数
+     */
     public Student(){}
 
-    // 带参数构造函数
+    /**
+     * 带参数构造函数
+     * @param name
+     * @param age
+     */
     public Student(String name, int age){
         this.name = name;
         this.age = age;
     }
 
 
-    // 重写父类的函数
+    /**
+     * 重写父类函数
+     * @return
+     */
     @Override
     public String toString() {
         return "Student{" +
